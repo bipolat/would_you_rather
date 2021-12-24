@@ -12,15 +12,4 @@ import Comp9  from './component/PResult';
 import Comp10  from './component/PTeaser';
 import Comp11 from './component/User';
 
-function App() {
-  return (
-    <div className="App">
-     
-     <App_/>
 
-
-    </div>
-  );
-}
-
-export default App;
