@@ -17,16 +17,7 @@ function App() {
     <div className="App">
      
      <App_/>
-     <Comp2/>
-     <Comp3/>
-     <Comp4/>
-     <Comp5/>
-     <Comp6/>
-     <Comp7/>
-     <Comp8/>
-     <Comp9/>
-     <Comp10/>
-     <Comp11/>
+
 
     </div>
   );
