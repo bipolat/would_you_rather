@@ -2,23 +2,35 @@ import React, { Component } from 'react';
 import PResult  from './PResult';
 import PQuestion  from './PQuestion';
 import PTeaser  from './PTeaser';
+import { Segment, Header, Grid, Image } from 'semantic-ui-react';
 
-class User extends Component
-{
-    render(){
-        return(
-            <div style={{border: '10px solid rgba(0, 0, 0, 5)'},{backgroundColor: "#500000"}}>
-                <h4>
-                User
-                <PResult/>
-                <PQuestion/>
-                <PTeaser/>
-                </h4>
-            </div>
-        )
-            
-        
+export class User extends Component {
+    static propTypes = {
+     
+    };
+    render() {
+     
+
+  
+     
+  
+      return (
+        <Segment.Group>
+
+  
+          <Grid divided padded>
+            <Grid.Row>
+              <Grid.Column width={5}>
+              <h3>Img</h3>
+              </Grid.Column>
+              <Grid.Column width={11}>
+               <h3>PlCntnt</h3>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment.Group>
+      );
     }
-}
+  }
 
 export default User;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import User from './User';
+import Question from './Question';
 import { Tab } from 'semantic-ui-react';
 
 class Main extends Component
@@ -11,7 +12,7 @@ class Main extends Component
                 Main
                 
                 </h4>
-                <Tab panes={panes}   className="tab"  />;
+                <Tab panes={panes}   className="tab"  />
             </div>
         )
             
@@ -20,8 +21,8 @@ class Main extends Component
 }
 
 const panes = [
-    { menuItem: 'Unanswered', render: () => <Tab.Pane><h4>Tab1</h4><User/></Tab.Pane> },
-    { menuItem: 'Answered', render: () => <Tab.Pane> <h4>Tab2</h4><User/></Tab.Pane> }
+    { menuItem: 'Unanswered', render: () => <Tab.Pane><Question/></Tab.Pane> },
+    { menuItem: 'Answered', render: () => <Tab.Pane><Question/></Tab.Pane> }
 
   ]
 

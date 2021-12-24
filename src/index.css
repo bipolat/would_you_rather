@@ -12,15 +12,15 @@ code {
     monospace;
 }
 
-/* home page tab highlight */
+
 .tab .ui.tabular.menu .item {
-  flex: 1 1 auto;
-  background: none #f6f6f6;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border-top-width: 1px;
-  border-color: #d4d4d5;
+  flex: 10 10 auto;
+  background: none #5f7554;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-width: 11px;
+  border-color: #29297e;
 }
 .tab .ui.tabular.menu .active.item {
-  background: none #fff;
+  background: none rgb(29, 158, 180);
 }
