@@ -1,49 +1,63 @@
-import React, { Component } from 'react';
-//import {  Switch } from 'react-router-dom';
-import {  Route ,Routes,Fragment,Switch} from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Login  from './Login';
-import User from './User';
-import NewQ  from './NewQ';
-import Leader  from './Leader';
-import NoContent  from './NoContent';
-import Navigate  from './Navigate';
-import Main  from './Main';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { handleInitialData } from '../actions/initData';
+import { Container, Row, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-class App extends Component
-{
-    render(){
-        const  authour  = null;
-        return(
-            <Router>
-        <div >
-          {authour === "null" ? (
-            <Route
-              render={() => (
-                <div>
-                  <Login />
-                </div>
-              )}
-            />
-          ) : (
-            <React.Fragment>
-              <Navigate />
-              <div>
-                <Switch>
-                  <Route exact path="/" component={Main} />
-                  <Route path="/questions/bad_id" component={NoContent} />
-                  <Route path="/questions/:question_id" component={User} />
-                  <Route path="/add" component={NewQ} />
-                  <Route path="/leaderboard" component={Leader} />
-                  <Route component={NoContent} />
-                </Switch>
-              </div>
-            </React.Fragment>
-          )}
-        </div>
+import LoadingBar from 'react-redux-loading';
+import NavigateBar from './NavigateBar';
+import HomePage from './HomePage';
+import NewQuestionPage from './NewQuestionPage';
+import LeaderboardPage from './LeaderboardPage';
+import QuestionPage from './QuestionPage';
+import SignIn from './SignIn';
+
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
+  
+  render() {
+    return (
+      <Router>     
+        <LoadingBar />
+        {this.props.loading === true ? null : (
+          <Container fluid >
+            <Row>
+             {this.props.authentication === '' ? 
+             <SignIn /> 
+             : (
+               <Fragment>
+                <Row  className="justify-content-md-center">
+                   <Col xs={9}>                
+                   <NavigateBar />
+                   </Col>
+                 </Row>
+                 <Row  className="justify-content-md-center">
+                   <Col xs={9}>
+                   <Switch>
+                     <Route exact path="/" component={HomePage} />
+                     <Route exact path="/question/:id" component={QuestionPage} />
+                     <Route exact path="/add" component={NewQuestionPage} />
+                     <Route exact path="/leaderboard" component={LeaderboardPage} />
+                   </Switch>
+                   </Col>
+                 </Row>
+               </Fragment>
+             )}
+            </Row>
+          </Container>
+        )}      
       </Router>
-        );               
-    }
+    );
+  }
 }
 
-export default App;
+function mapStateToProps({ users, authentication }) {
+  return {
+    authentication,
+    loading: users === null,
+  };
+}
+
+export default connect(mapStateToProps)(App);
